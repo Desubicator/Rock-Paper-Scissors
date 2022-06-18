@@ -27,10 +27,11 @@ function playRound(playerSelection) {
         computerScore += 1
         result = ('You lose! ' + computerSelection + ' beats ' + playerSelection
             + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+        }
 
-    document.getElementById('result').innerHTML = result;
+    document.getElementById('result').innerText = result;
     return
-}
+
 
 buttons.forEach(button =>{
     button.addEventListener('click', function(){
