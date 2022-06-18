@@ -2,6 +2,8 @@ let playerScore = 0;
 let computerScore = 0;
 const buttons = document.querySelectorAll('input');
 const resultBox = document.getElementById('result');
+pScore = document.getElementById('playerScore');
+cScore = document.getElementById('computerScore');
 
 function computerPlay() {
     let choices = ['rock', 'paper', 'scissors']
@@ -17,21 +19,21 @@ function playRound(playerSelection) {
         (playerSelection == 'paper' && computerSelection == 'rock')) {
         
         playerScore += 1
-        result = ('You win! ' + playerSelection + ' beats ' + computerSelection
-            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+        result = ('You win! ' + playerSelection + ' beats ' + computerSelection)
     }
     else if (playerSelection == computerSelection) {
-        result = ('It\'s a tie. You both chose ' + playerSelection
-            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+        result = ('It\'s a tie. You both chose ' + playerSelection)
     }
     else {
         computerScore += 1
-        result = ('You lose! ' + computerSelection + ' beats ' + playerSelection
-            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+        result = ('You lose! ' + computerSelection + ' beats ' + playerSelection)
         }
 
         console.log(result);
         resultBox.innerHTML = result;
+        pScore.innerHTML = "Player score: " + playerScore;
+        cScore.innerHTML = "Computer score: " + computerScore;
+
     return
 }
 
