@@ -22,7 +22,7 @@ function playRound(playerSelection) {
         result = ('You win! ' + playerSelection + ' beats ' + computerSelection)
     }
     else if (playerSelection == computerSelection) {
-        result = ('It\'s a tie. You both chose ' + playerSelection)
+        result = ('It\'s a tie. Both have chosen ' + playerSelection)
     }
     else {
         computerScore += 1
