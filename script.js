@@ -1,60 +1,38 @@
+let playerScore = 0
+let computerScore = 0
+const buttons = document.querySelectorAll('input')
+
 function computerPlay() {
-    let outcomes = ["Rock", "Paper", "Scissors"];
-    let computerSelection = outcomes[Math.floor(Math.random() * outcomes.length)];
-    return computerSelection;
+    let choices = ['rock', 'paper', 'scissors']
+    return choices[Math.floor(Math.random() * choices.length)]
+}
+function playRound(playerSelection) {
+    let computerSelection = computerPlay()
+    let result = ""
+
+    if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
+        (playerSelection == 'scissors' && computerSelection == 'paper') ||
+        (playerSelection == 'paper' && computerSelection == 'rock')) {
+        
+        playerScore += 1
+        result = ('You win! ' + playerSelection + ' beats ' + computerSelection
+            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+    }
+    else if (playerSelection == computerSelection) {
+        result = ('It\'s a tie. You both chose ' + playerSelection
+            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+    }
+    else {
+        computerScore += 1
+        result = ('You lose! ' + computerSelection + ' beats ' + playerSelection
+            + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+
+    document.getElementById('result').innerHTML = result;
+    return
 }
 
-function game() {
-
-  let computerScore = 0;
-  let playerScore = 0;
-  let rounds = parseInt(prompt("Choose amount of rounds"));
-
-  function playRound(playerSelection, computerSelection) {
-
-    if(playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "ROCK"){
-        return "Both players have chosen Rock, it is a tie!";
-    } else if (playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "PAPER") {
-        return "Both players have chosen Paper, it is a tie!";
-    } else if (playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() === "SCISSORS") {
-        return "Both players have chosen Scissors, it is a tie!";
-    } else if (playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() === "PAPER") {
-        playerScore++;
-        return "Player won, Scissors beats Paper!";
-    } else if (playerSelection.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() === "ROCK") {
-        computerScore++;
-        return "Computer won, Rock beats Scissors!";
-    } else if (playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK") {
-        playerScore++;
-        return "Player won, Paper beats Rock!";
-    } else if (playerSelection.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "SCISSORS") {
-        computerScore++;
-        return "Computer won, Scissors beats Paper!";
-    } else if (playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "SCISSORS") {
-        playerScore++;
-        return "Player won, Rock beats Scissors!";
-    } else if (playerSelection.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "PAPER") {
-        computerScore++;
-        return "Computer won, Paper beats Rock!";
-    }
-};
-
-    for (let i = 0; i < rounds; i++) {
-
-        const playerSelection = prompt("Choose between Rock, Paper and Scissors");
-        const computerSelection = computerPlay();
-
-        playRound(playerSelection, computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
-        
-     }
-
-     if (playerScore === computerScore) {
-        return `Player Score: ${playerScore/2}, Computer Score: ${computerScore/2}, Tie Game!`
-     } else if (playerScore < computerScore) {
-        return `Player Score: ${playerScore/2}, Computer Score: ${computerScore/2}, Computer Wins!`
-     } else {
-        return `Player Score: ${playerScore/2}, Computer Score: ${computerScore/2}, Player Wins!`
-     }
-    
-};
+buttons.forEach(button =>{
+    button.addEventListener('click', function(){
+        playRound(button.value)
+    })
+})}
