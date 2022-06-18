@@ -12,3 +12,11 @@
     height: auto;
     padding-top: 50px;
   }
+
+.playing {
+    transform: scale(1.3);
+    border-color: #000000;;
+    box-shadow: 0 0 1rem #000000;
+    filter: invert(10%);
+    border-radius: 25px;
+  }

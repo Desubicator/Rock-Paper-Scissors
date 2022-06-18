@@ -29,7 +29,6 @@ function playRound(playerSelection) {
         result = ('You lose! ' + computerSelection + ' beats ' + playerSelection)
         }
 
-        console.log(result);
         resultBox.innerHTML = result;
         pScore.innerHTML = "Player score: " + playerScore;
         cScore.innerHTML = "Computer score: " + computerScore;
@@ -40,5 +39,12 @@ function playRound(playerSelection) {
 buttons.forEach(button =>{
     button.addEventListener('click', function(){
         playRound(button.value)
+        button.classList.add("playing");
     })
 })
+
+function removeTransition(e) {
+    this.classList.remove("playing");
+}
+
+buttons.forEach(button => button.addEventListener("mouseout", removeTransition));
