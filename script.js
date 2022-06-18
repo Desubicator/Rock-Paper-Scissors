@@ -1,6 +1,7 @@
-let playerScore = 0
-let computerScore = 0
-const buttons = document.querySelectorAll('input')
+let playerScore = 0;
+let computerScore = 0;
+const buttons = document.querySelectorAll('input');
+const resultBox = document.getElementById('result');
 
 function computerPlay() {
     let choices = ['rock', 'paper', 'scissors']
@@ -29,12 +30,13 @@ function playRound(playerSelection) {
             + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
         }
 
-    document.getElementById('result').innerText = result;
+        console.log(result);
+        resultBox.innerHTML = result;
     return
-
+}
 
 buttons.forEach(button =>{
     button.addEventListener('click', function(){
         playRound(button.value)
     })
-})}
+})
